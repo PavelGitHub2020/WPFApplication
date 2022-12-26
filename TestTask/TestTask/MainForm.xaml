@@ -1,0 +1,41 @@
+﻿<Window x:Class="TestTask.MainForm"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TestTask"
+        mc:Ignorable="d"
+        Title="MainForm" Height="400" Width="500" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <DataGrid x:Name="dataGrid"  Height="350" Width="170" Margin="-300,10,0,0" IsReadOnly="True"
+                  SelectionMode="Single" ItemsSource="{Binding SomeValues}" SelectedItem="{Binding SelectedSomeValue}"/>
+
+        <StackPanel Margin="-100,140,0,0" Width="100" Height="90" DataContext="{Binding SelectedSomeValue}" Visibility="Hidden" >
+            <TextBlock Text="Selected item"  />
+            <TextBlock Text="Name" />
+            <TextBox x:Name="txtName" Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}"
+                     TextAlignment ="Center" />
+            <TextBlock Text="Value" />
+            <TextBox x:Name="txtValue" Text="{Binding SValue, UpdateSourceTrigger=PropertyChanged}"/>
+        </StackPanel>
+
+        <DataGrid x:Name="dataGrid1" Width="135" Height="350" Margin="340,10,0,0" IsReadOnly="True"></DataGrid>
+
+        <TextBlock Width="140" Height="30" Margin="40,-320,0,0" FontSize="20">Selected values:</TextBlock>
+
+        <TextBlock x:Name="textName" Width="97" Height="40" Margin="-95,-240,0,0" TextWrapping="Wrap"></TextBlock>
+
+        <TextBlock x:Name="textValue" Width="34" Height="40" Margin="155,-240,0,0" TextWrapping="Wrap"></TextBlock>
+
+        <Button x:Name="btnMatrixOfResult" Width="140" Height="30" Margin="40,-180,0,0" FontSize="20"
+                Click="MatrixOfResult_Click">Matrix of result:</Button>
+
+        <TextBlock Width="30" Height="20" Margin="-70,-120,0,0">Cells:</TextBlock>
+        
+        <TextBlock Width="30" Height="20" Margin="150,-120,0,0">Value:</TextBlock>
+
+        <TextBlock x:Name="resultValue" Width="50" Height="20" Margin="170,-80,0,0"></TextBlock>
+
+        <TextBlock x:Name="resultName" Width="50" Height="20" Margin="-50,-80,0,0" ></TextBlock>
+    </Grid>
+</Window>
